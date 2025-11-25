@@ -1,4 +1,4 @@
-TEST FILE - SAME TEXT AS the_method_en.txt on the_method folder OR OUTDATED
+TEST FILE - SAME TEXT AS the_method_en.txt on method folder OR OUTDATED
 
 "the method" is an exploit for IMTLazarus for Chromebook that occurs thanks to the folder that it creates on your bookmarks ([name of your school w/ no caps and altogether])
 
