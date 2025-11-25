@@ -1,0 +1,27 @@
+"the method" is an exploit for IMTLazarus for Chromebook that occurs thanks to the folder that it creates on your bookmarks ([name of your school w/ no caps and altogether])
+
+to replicate it:
+1. locate your folder
+2. delete it
+3. wait until Lazarus creates it again
+4. delete again and as soon as posible after doing so, restart with Reload Page+Power
+5. as soon as possible, press Esc+Reload Page+Power to enter Recovery Mode
+6. close/Shut down your Chromebook and turn it on again
+7. when logged in, press Alt+[1 to 9] on your keyboard to open Chrome manually
+8. try to go to a (normally) blocked page
+9. enjoy! (if everything was done correctly)
+
+- how did you find this?
+tinkering around.
+
+- can a teacher see me while in this state? what does this do?
+not really, as this exploit kills the IMTLazarus process on login for the account on which the process was done
+
+- I've rebooted my Chromebook and it's back, what happened?
+oh, yea, this only lasts until you restart/shut down your Chromebook
+
+- I've tried various times but it doesn't work, what do I do?
+there are various variants on how to enable this. They will be added as separate files when I discover and try them out to document the process.
+
+credits:
+galzstuff on github
