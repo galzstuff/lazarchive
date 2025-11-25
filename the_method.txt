@@ -22,3 +22,6 @@ oh, yea, this only lasts until you restart/shut down your Chromebook
 
 - I've tried various times but it doesn't work, what do I do?
 there are various variants on how to enable this. They will be added as separate files when I discover and try them out to document the process.
+
+credits:
+galzstuff on github
