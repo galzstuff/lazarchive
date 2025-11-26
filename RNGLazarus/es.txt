@@ -3,3 +3,7 @@ el bug RNGLazarus (llamado así por mí :3) es un bug, similar al exploit "el m�
 como hacer este bug:
 - se llama RNGLazarus. como si el nombre no te fuera suficiente, se basa en la suerte.
 - NOS VAMOS A PUTO APOSTAR BABY
+
+créditos:
+galzstuff en github
+unos amigos míos por reportarme las primeras ocurrencias del bug
