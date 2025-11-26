@@ -6,8 +6,9 @@ this made it so:
 - i could visit any site (except chrome:// sites that IMTLazarus ALWAYS blocked no matter what)
 - teachers could not see me on IMTLazarus or control anything related to me at all
 - i still had a tab limit, sadly, as IMTLazarus' runtime wasn't killed, it just failed to fetch necessary information(?).
+- when LITERALLY resetting the Chromebook through Recovery Mode, on login, the bug would persist to happen
 
-it did get fixed FOR ME, as a teacher asked why they were not able to see me on the panel, and i said "oh, it most probably bugged, you know?" (and i got my profile reset and therefor all my data erased the next day)
+it did get fixed FOR ME after FORCEFULLY restarting my profile, as a teacher asked why they were not able to see me on the panel, and i said "oh, it most probably bugged, you know?" (and i got my profile reset and therefor all my data erased the next day)
 
 how to do this:
 i don't know. it happened to me randomly, so i guess it's up to you to try and do this, but if i find a way i'll log it in here.
