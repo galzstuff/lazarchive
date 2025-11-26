@@ -3,3 +3,7 @@ bug named "RNGLazarus" (by me :3) is a bug that can happen on login (or at any t
 how to do this bug:
 - the name is literally RNGLazarus. it's luck based, what did you expect?
 - LET'S GO FUCKING GAMBLING BABY!!!!
+
+credits:
+galzstuff on github
+various friends of mine which reported the ocurrences to me
