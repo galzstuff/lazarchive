@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>lazarchive</title>
+    <title>Dashboard - lazarchive</title>
     <style>
         * {
             margin: 0;
@@ -29,6 +29,55 @@
             margin-bottom: 30px;
             font-size: 2.5em;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .language-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .language-modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            max-width: 500px;
+        }
+
+        .language-modal h2 {
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .language-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .language-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            font-size: 1.2em;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .language-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
         }
 
         .repo-info {
@@ -184,6 +233,8 @@
             text-decoration: none;
             font-size: 0.9em;
             transition: all 0.2s;
+            border: none;
+            cursor: pointer;
         }
 
         .file-link:hover {
@@ -225,21 +276,113 @@
         .breadcrumb-separator {
             color: #999;
         }
+
+        .file-viewer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            z-index: 999;
+            display: none;
+            flex-direction: column;
+        }
+
+        .file-viewer-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .file-viewer-title {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .file-viewer-close {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.2s;
+        }
+
+        .file-viewer-close:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .file-viewer-content {
+            flex: 1;
+            overflow: auto;
+            padding: 30px;
+        }
+
+        .file-viewer-loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        pre {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            line-height: 1.6;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div id="languageModal" class="language-modal">
+        <div class="language-modal-content">
+            <h2>Select Language / Seleccionar Idioma</h2>
+            <div class="language-buttons">
+                <button class="language-btn" onclick="setLanguage('es')">🇪🇸 Español</button>
+                <button class="language-btn" onclick="setLanguage('en')">🇬🇧 English</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="fileViewer" class="file-viewer">
+        <div class="file-viewer-header">
+            <div class="file-viewer-title" id="viewerTitle">Loading...</div>
+            <button class="file-viewer-close" onclick="closeViewer()">✕ <span id="closeText">Close</span></button>
+        </div>
+        <div class="file-viewer-content" id="viewerContent">
+            <div class="file-viewer-loading">
+                <div class="spinner"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="mainContent" style="display: none;">
         <h1>📂 lazarchive</h1>
         
         <div class="repo-info">
-            <p>📦 Check the repo: <a href="https://github.com/galzstuff/lazarchive" target="_blank">galzstuff/lazarchive</a></p>
+            <p id="repoText">📦 Repository: <a href="https://github.com/galzstuff/lazarchive" target="_blank">galzstuff/lazarchive</a></p>
         </div>
 
         <div id="breadcrumb" class="breadcrumb" style="display: none;"></div>
 
         <div id="loading" class="loading">
             <div class="spinner"></div>
-            <p>Cargando contenido del repositorio...</p>
+            <p id="loadingText">Loading repository content...</p>
         </div>
 
         <div id="error" style="display: none;"></div>
@@ -257,8 +400,53 @@
         const REPO = 'lazarchive';
         const API_BASE = `https://api.github.com/repos/${OWNER}/${REPO}/contents`;
 
-        let currentPath = '';
-        let pathHistory = [];
+        let currentLanguage = 'en';
+        const translations = {
+            en: {
+                repository: 'Repository',
+                loading: 'Loading repository content...',
+                home: 'Home',
+                folder: 'Folder',
+                rootFiles: 'Root Files',
+                view: 'View',
+                close: 'Close',
+                error: 'Error loading repository',
+                errorMessage: 'Make sure the repository exists and is public.',
+                emptyFolder: 'This folder is empty',
+                viewingFile: 'Viewing file'
+            },
+            es: {
+                repository: 'Repositorio',
+                loading: 'Cargando contenido del repositorio...',
+                home: 'Inicio',
+                folder: 'Carpeta',
+                rootFiles: 'Archivos Raíz',
+                view: 'Ver',
+                close: 'Cerrar',
+                error: 'Error al cargar el repositorio',
+                errorMessage: 'Asegúrate de que el repositorio existe y es público.',
+                emptyFolder: 'Esta carpeta está vacía',
+                viewingFile: 'Viendo archivo'
+            }
+        };
+
+        function t(key) {
+            return translations[currentLanguage][key] || key;
+        }
+
+        function setLanguage(lang) {
+            currentLanguage = lang;
+            document.getElementById('languageModal').style.display = 'none';
+            document.getElementById('mainContent').style.display = 'block';
+            updateTexts();
+            loadContent();
+        }
+
+        function updateTexts() {
+            document.getElementById('repoText').innerHTML = `📦 ${t('repository')}: <a href="https://github.com/galzstuff/lazarchive" target="_blank">galzstuff/lazarchive</a>`;
+            document.getElementById('loadingText').textContent = t('loading');
+            document.getElementById('closeText').textContent = t('close');
+        }
 
         async function fetchRepoContents(path = '') {
             try {
@@ -277,12 +465,68 @@
             }
         }
 
+        async function fetchFileContent(file) {
+            try {
+                const response = await fetch(file.download_url);
+                if (!response.ok) {
+                    throw new Error(`Error ${response.status}: ${response.statusText}`);
+                }
+                return await response.text();
+            } catch (error) {
+                console.error('Error fetching file content:', error);
+                throw error;
+            }
+        }
+
+        async function openFileViewer(file) {
+            const viewer = document.getElementById('fileViewer');
+            const viewerTitle = document.getElementById('viewerTitle');
+            const viewerContent = document.getElementById('viewerContent');
+
+            viewer.style.display = 'flex';
+            viewerTitle.textContent = `${t('viewingFile')}: ${file.name}`;
+            viewerContent.innerHTML = '<div class="file-viewer-loading"><div class="spinner"></div></div>';
+
+            try {
+                const content = await fetchFileContent(file);
+                const ext = file.name.split('.').pop().toLowerCase();
+
+                if (['jpg', 'jpeg', 'png', 'gif', 'svg', 'webp'].includes(ext)) {
+                    viewerContent.innerHTML = `<img src="${file.download_url}" alt="${file.name}">`;
+                } else if (['mp4', 'webm', 'ogg'].includes(ext)) {
+                    viewerContent.innerHTML = `<video controls style="max-width: 100%;"><source src="${file.download_url}" type="video/${ext}"></video>`;
+                } else if (['mp3', 'wav', 'ogg'].includes(ext)) {
+                    viewerContent.innerHTML = `<audio controls style="width: 100%;"><source src="${file.download_url}" type="audio/${ext}"></audio>`;
+                } else if (ext === 'pdf') {
+                    viewerContent.innerHTML = `<iframe src="${file.download_url}" style="width: 100%; height: 100%; border: none;"></iframe>`;
+                } else {
+                    viewerContent.innerHTML = `<pre>${escapeHtml(content)}</pre>`;
+                }
+            } catch (error) {
+                viewerContent.innerHTML = `<div class="error"><h3>❌ ${t('error')}</h3><p>${error.message}</p></div>`;
+            }
+        }
+
+        function closeViewer() {
+            document.getElementById('fileViewer').style.display = 'none';
+        }
+
+        function escapeHtml(text) {
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return text.replace(/[&<>"']/g, m => map[m]);
+        }
+
         async function loadContent(path = '') {
             const loading = document.getElementById('loading');
             const error = document.getElementById('error');
             const foldersGrid = document.getElementById('foldersGrid');
             const filesSection = document.getElementById('filesSection');
-            const breadcrumb = document.getElementById('breadcrumb');
 
             loading.style.display = 'block';
             error.style.display = 'none';
@@ -297,10 +541,8 @@
                 const folders = contents.filter(item => item.type === 'dir');
                 const files = contents.filter(item => item.type === 'file');
 
-                // Update breadcrumb
                 updateBreadcrumb(path);
 
-                // Display folders
                 if (folders.length > 0) {
                     folders.sort((a, b) => a.name.localeCompare(b.name));
                     folders.forEach(folder => {
@@ -309,7 +551,7 @@
                         folderCard.innerHTML = `
                             <div class="folder-icon">📁</div>
                             <div class="folder-name">${folder.name}</div>
-                            <div class="folder-count">Carpeta</div>
+                            <div class="folder-count">${t('folder')}</div>
                         `;
                         folderCard.addEventListener('click', () => {
                             loadContent(folder.path);
@@ -318,13 +560,12 @@
                     });
                 }
 
-                // Display files
                 if (files.length > 0) {
                     displayFiles(files, path);
                 }
 
                 if (folders.length === 0 && files.length === 0) {
-                    foldersGrid.innerHTML = '<p style="color: white; text-align: center; grid-column: 1/-1;">Esta carpeta está vacía</p>';
+                    foldersGrid.innerHTML = `<p style="color: white; text-align: center; grid-column: 1/-1;">${t('emptyFolder')}</p>`;
                 }
 
             } catch (err) {
@@ -332,9 +573,9 @@
                 error.style.display = 'block';
                 error.innerHTML = `
                     <div class="error">
-                        <h3>❌ Error when loading repo</h3>
+                        <h3>❌ ${t('error')}</h3>
                         <p>${err.message}</p>
-                        <p style="margin-top: 10px; font-size: 0.9em;">Asegúrate de que el repositorio existe y es público.</p>
+                        <p style="margin-top: 10px; font-size: 0.9em;">${t('errorMessage')}</p>
                     </div>
                 `;
             }
@@ -350,7 +591,7 @@
             }
 
             breadcrumb.style.display = 'flex';
-            breadcrumb.innerHTML = '<span class="breadcrumb-item" onclick="loadContent(\'\')">🏠 Home</span>';
+            breadcrumb.innerHTML = `<span class="breadcrumb-item" onclick="loadContent('')">🏠 ${t('home')}</span>`;
 
             let currentPath = '';
             parts.forEach((part, index) => {
@@ -374,7 +615,7 @@
             const currentFolderTitle = document.getElementById('currentFolder');
 
             filesSection.style.display = 'block';
-            currentFolderTitle.textContent = path ? `📂 ${path.split('/').pop()}` : '📂 Root files';
+            currentFolderTitle.textContent = path ? `📂 ${path.split('/').pop()}` : `📂 ${t('rootFiles')}`;
             fileList.innerHTML = '';
 
             files.sort((a, b) => a.name.localeCompare(b.name));
@@ -394,7 +635,7 @@
                             <span class="file-size">${size}</span>
                         </div>
                     </div>
-                    <a href="${file.html_url}" target="_blank" class="file-link">Ver</a>
+                    <button class="file-link" onclick='openFileViewer(${JSON.stringify(file).replace(/'/g, "&apos;")})'>${t('view')}</button>
                 `;
                 
                 fileList.appendChild(fileItem);
@@ -427,9 +668,6 @@
             const i = Math.floor(Math.log(bytes) / Math.log(k));
             return Math.round(bytes / Math.pow(k, i) * 100) / 100 + ' ' + sizes[i];
         }
-
-        // Load content on page load
-        loadContent();
     </script>
 </body>
 </html>
