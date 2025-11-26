@@ -1,0 +1,17 @@
+- NOTA: SE DESCONOCE SI ESTO FUNCIONA PARA OTRAS VERSIONES DE IMTLAZARUS, PERO ESTE BUG ME OCURRIÓ EN LA VERSIÓN DE CHROMEBOOK
+al momento de hacer esta entrada, me encontré con un bug al recién empezar el año escolar.
+parecía ser que, a IMTLazarus, por alguna razón, le había dado por simplemente dejar de saber que yo era un estudiante de [x colegio no me voy a doxxear] y que, en general, se me controlaba en IMTLazarus
+
+esto hizo que:
+- podía visitar CUALQUIER página (excepto páginas chrome:// que IMTLazarus bloquea por defecto siempre)
+- los profesores no me podían ver en IMTLazarus ni controlar nada relacionado a mí en lo absoluto
+- aún tenía un límite de pestañas, debido a que el trabajador de fondo de la extensión no había muerto, solo fallaba al recoger información sobre mí para saber como manejarme.
+- incluso al LITERALMENTE restablecer el Chromebook desde el modo Recuperación, al iniciar sesión, el bug persistiría
+
+se arregló PARA MÍ, al FORZOSAMENTE reiniciar mi perfil, debido a que un profesor me preguntó por qué no se me veía en el panel, y dije "oh, se habrá debido de buguear, ¿sabes? no he tenido nada que ver." (yyyy me reiniciaron el perfil al día siguiente perdiendo así todos mis datos)
+
+como hacer esto:
+lol no tengo ni idea. me pasó de forma random, así que queda en tus manos intentar hacer esto. si un método se encuentra, se registrará aquí.
+
+créditos:
+galzstuff en github
