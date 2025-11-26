@@ -11,3 +11,6 @@ it did get fixed FOR ME, as a teacher asked why they were not able to see me on 
 
 how to do this:
 i don't know. it happened to me randomly, so i guess it's up to you to try and do this, but if i find a way i'll log it in here.
+
+credits:
+galzstuff on github
