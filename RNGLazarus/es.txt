@@ -1,0 +1,5 @@
+el bug RNGLazarus (llamado así por mí :3) es un bug, similar al exploit "el método", en el que, al iniciar sesión en un Chromebook con esta extensión (o en cualquier momento), todo se desbloquea (presumiblemente por que el trabajador de fondo de IMTLazarus ha muerto).
+
+como hacer este bug:
+- se llama RNGLazarus. como si el nombre no te fuera suficiente, se basa en la suerte.
+- NOS VAMOS A PUTO APOSTAR BABY
