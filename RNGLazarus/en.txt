@@ -1,0 +1,5 @@
+bug named "RNGLazarus" (by me :3) is a bug that can happen on startup (or at any time at all), similar to "the method" exploit, where everything is unlocked (presumably because the IMTLazarus background worker/runtime died).
+
+how to do this bug:
+- the name is literally RNGLazarus. it's luck based, what did you expect?
+- LET'S GO FUCKING GAMBLING BABY!!!!
