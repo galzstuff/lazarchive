@@ -1,0 +1,12 @@
+"el método" es un exploit para IMTLazarus para Chromebooks el cual es posible gracias a la carpeta creada en tus marcadores por este mismo (nombre de tu escuela todo junto y en minúsculas)
+
+para replicarlo:
+1. localiza la carpeta con el nombre anteriormente indicado
+2. elimínala
+3. espera a que Lazarus la vuelva a crear
+4. vuelve a eliminarla y pulsa Recargar página+Botón de encendido para reiniciar forzosamente
+5. tan pronto como puedas, pulsa esc+Recargar página+Botón de encendido para entrar en modo recuperación
+6. cierra tu Chromebook para apagarlo y ábrelo de nuevo para encenderlo
+7. cuando inicies sesión, pulsa Alt+[1 al 9 en tu teclado] para abrir Chrome manualmente
+8. intenta a ir a una página normalmente bloqueada
+9. ¡disfruta! (si todo se hizo correctamente)
