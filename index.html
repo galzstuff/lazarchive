@@ -381,7 +381,7 @@
         
         <div class="repo-info">
             <p id="repoText">📦 Repository: <a href="https://github.com/galzstuff/lazarchive" target="_blank">galzstuff/lazarchive</a></p>
-            <p id="desc">LazArchive is an archive of exploits and bugs for blocker IMTLazarus that's constantly adding new entries.</p>
+            <p id="desc">LazArchive is an archive of exploits and bugs for blocker IMTLazarus that`s constantly adding new entries.</p>
         </div>
 
         <div id="breadcrumb" class="breadcrumb" style="display: none;"></div>
@@ -452,6 +452,8 @@
 
         function updateTexts() {
             document.getElementById('repoText').innerHTML = `📦 ${t('repository')}: <a href="https://github.com/galzstuff/lazarchive" target="_blank">galzstuff/lazarchive</a>`;
+
+document.getElementById('desc').textContent = t('desc');
             document.getElementById('loadingText').textContent = t('loading');
             document.getElementById('closeText').textContent = t('close');
         }
