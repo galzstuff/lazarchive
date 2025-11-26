@@ -10,3 +10,17 @@ para replicarlo:
 7. cuando inicies sesión, pulsa Alt+[1 al 9 en tu teclado] para abrir Chrome manualmente
 8. intenta a ir a una página normalmente bloqueada
 9. ¡disfruta! (si todo se hizo correctamente)
+
+- ¿cómo descubriste esto?
+jugueteando y toqueteando hasta que ¡tachán!, logré hacer una serie de pasos que me llevaron al exploit
+
+- ¿puede un profesor verme en este estado? ¿qué hace este exploit?
+no, debido a que el exploit literalmente mata el proceso de IMTLazarus durante la sesión, lo cual me lleva al siguiente punto:
+  - ¡he apagado mi Chromebook y al volver a encenderlo el exploit ha dejado de funcionar!
+    sí, es debido a que el exploit solo dura una sesión.
+
+- lo he intentado varias veces pero no funciona, ¿qué hago?
+  se sabe que existen distintas variantes del exploit, pero, por desgracia, no las tengo todas documentadas al 100%. cuando se sepa el funcionamiente de una, se añadirá a un archivo diferente.
+
+créditos:
+galzstuff en github
