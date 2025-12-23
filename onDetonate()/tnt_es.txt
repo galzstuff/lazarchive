@@ -1,0 +1,9 @@
+want to hide ALL traces of you using exploits such as "the method" whilst having a few minutes of freedom after still? then follow these steps:
+
+(Note: THIS EXPLOIT IS REALLY NOT WORTH USING, and even if you want to do it, backup anything important. This only works for Chromebooks)
+1. Asegúrate que en tus opciones de sincronización no se sincronice el historial.
+2. Cierra sesión y elimina tu cuenta del dispositivo
+3. Registrate de nuevo y, tan pronto como puedas, desactiva tu internet, pero asegurando que IMTLazarus se ha instalado.
+4. Cierra e inicia sesión otra vez.
+
+Si todo va como debería, IMTLazarus tardará más de lo normal en recoger tu información y, de mientras, podrás hacer todo lo que quieras.
