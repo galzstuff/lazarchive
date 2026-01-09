@@ -11,7 +11,7 @@ this made it so:
 it did get fixed FOR ME after FORCEFULLY restarting my profile, as a teacher asked why they were not able to see me on the panel, and i said "oh, it most probably bugged, you know?" (and i got my profile reset and therefor all my data erased the next day)
 
 how to do this:
-i don't know. it happened to me randomly, so i guess it's up to you to try and do this, but if i find a way i'll log it in here.
+i don't know. it happened to me randomly, so i guess it's up to you to try and do this, but if i find a way i'll log it in here. (upd. 9/1/2026: im testing ways to trigger this bug which may be related to specific inputs and actions on accound registration on a device. ill keep testing till i find the way to trigger the bug or until i give up and search other ways to trigger the bug)
 
 credits:
 galzstuff on github
