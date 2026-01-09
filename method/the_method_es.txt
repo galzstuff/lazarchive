@@ -22,5 +22,8 @@ no, debido a que el exploit literalmente mata el proceso de IMTLazarus durante l
 - lo he intentado varias veces pero no funciona, ¿qué hago?
   se sabe que existen distintas variantes del exploit, pero, por desgracia, no las tengo todas documentadas al 100%. cuando se sepa el funcionamiente de una, se añadirá a un archivo diferente.
 
+ACTU (9/1/2026):
+Parece ser que es posible hacer el exploit sin si quiera tener la carpeta, pero hace que sea muy complicado y a veces hará que el exploit no se pueda realizar hasta un tiempo indefinido(?)
+
 créditos:
 galzstuff en github
