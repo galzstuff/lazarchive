@@ -23,5 +23,8 @@ oh, yea, this only lasts until you restart/shut down your Chromebook
 - I've tried various times but it doesn't work, what do I do?
 there are various variants on how to enable this. They will be added as separate files when I discover and try them out to document the process.
 
+UPDATE (9/1/2026):
+It seems like you can do The Method WITHOUT deleting the folder, which is nice if your school didn't enable it, but the exploit will have lower and sometimes nulled chances of working.
+
 credits:
 galzstuff on github
