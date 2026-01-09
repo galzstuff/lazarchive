@@ -11,7 +11,7 @@ esto hizo que:
 se arregló PARA MÍ, al FORZOSAMENTE reiniciar mi perfil, debido a que un profesor me preguntó por qué no se me veía en el panel, y dije "oh, se habrá debido de buguear, ¿sabes? no he tenido nada que ver." (yyyy me reiniciaron el perfil al día siguiente perdiendo así todos mis datos)
 
 como hacer esto:
-lol no tengo ni idea. me pasó de forma random, así que queda en tus manos intentar hacer esto. si un método se encuentra, se registrará aquí.
+lol no tengo ni idea. me pasó de forma random, así que queda en tus manos intentar hacer esto. si un método se encuentra, se registrará aquí. (actu 9/1/2026: es probable que para hacer este bug haya que hacer un patrón de acciones muy específico, estoy probando cosas y así seguirá siendo hasta que encuentre la manera [o hasta que piense que mi hipótesis era equivocada y busque otra])
 
 créditos:
 galzstuff en github
