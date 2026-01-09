@@ -1,0 +1,5 @@
+ingore is an exploit which allows to pretty much freeze IMTLazarus (and maybe crash your Chromebook due to a memory leak in the process lmao) a little bit to open file:// directories and maybe even blocked chrome:// URLs.
+
+It's easy: just spam CTRL+T until Lazarus just doesn't care anymore (AKA freezes), hope your RAM didn't go out the sewer and profit if it wasn't the case.
+
+- Note: I don't know about visibility on the teachers panel with this exploit because I got told this exploit by a friend but havn't suceeded doing it.
