@@ -1,0 +1,3 @@
+ingore es un pequeño exploit que te permite congelar IMTLazarus un pelin, pero lo suficiente para abrir rutas file:// y chrome:// bloqueadas normalmente en la edición para Chromebooks. (OJO: ES PROBABLE QUE CAUSES UNA FUGA DE MEMORIA POR ESTO Y LAS PRIMERAS VECES NO TE SALGA)
+
+Es fácil: solo spamea CTRL+T hasta que (con suerte) Lazarus se congele y tu RAM no se haya ido por el retrete, y en cuyo caso disfrutar.
